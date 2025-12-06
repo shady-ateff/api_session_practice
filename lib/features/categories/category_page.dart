@@ -1,5 +1,6 @@
 import 'package:api_session_practice/features/product_details/product_details_page.dart';
-import 'package:api_session_practice/shared/components/product_card.dart';
+import 'package:api_session_practice/components/product_card.dart';
+import 'package:api_session_practice/features/products/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class CategoryPage extends StatelessWidget {
@@ -39,7 +40,22 @@ class CategoryPage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ProductDetailsPage()),
+                  MaterialPageRoute(builder: (context) => ProductDetailsPage(
+
+                    product: Product(
+                      id: 0,
+                      title: "N/A",
+                      description: "N/A",
+                      category: "N/A",
+                      price: 0.0,
+                      discountPercentage: 0.0,
+                      rating: 0.0,
+                      weight: 0.0,
+                      images: [
+                        "https://via.placeholder.com/150"
+                      ],
+                    ),
+                  )),
                 );
               },
             );

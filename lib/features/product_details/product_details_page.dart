@@ -1,11 +1,13 @@
 import 'package:api_session_practice/features/product_details/widgets/product_details_item_counter.dart';
-import 'package:api_session_practice/shared/components/custom_button.dart';
-import 'package:api_session_practice/shared/core/utils/app_colors.dart';
-import 'package:api_session_practice/shared/core/utils/app_theme.dart';
+import 'package:api_session_practice/components/custom_button.dart';
+import 'package:api_session_practice/core/utils/app_colors.dart';
+import 'package:api_session_practice/core/utils/app_theme.dart';
+import 'package:api_session_practice/features/products/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  const ProductDetailsPage({super.key});
+  const ProductDetailsPage({super.key , required this.product});
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class ProductDetailsPage extends StatelessWidget {
             ),
             child: SafeArea(
               child: Image.network(
-                "https://cdn.dummyjson.com/product-images/groceries/apple/1.webp",
+                product.images![0],
                 height: 250,
                 width: double.infinity,
                 fit: BoxFit.contain,
@@ -54,9 +56,9 @@ class ProductDetailsPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           spacing: 5,
                           children: [
-                            Text("Product Name", style: AppTheme.headLineBold),
+                            Text(product.title ?? 'Product Name', style: AppTheme.headLineBold),
                             Text(
-                              '2 , Price',
+                              product.category ?? 'Category Name',
                               style: AppTheme.body,
                             ),
                           ],
@@ -70,7 +72,7 @@ class ProductDetailsPage extends StatelessWidget {
                     children: [
                       ProductDetailsItemCounter(),
                       Text(
-                        '\$product.price',
+                        '\$${product.price?.toStringAsFixed(2) ?? '0.00'}',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -92,7 +94,7 @@ class ProductDetailsPage extends StatelessWidget {
                     children: [
                       RichText(
                         text: TextSpan(
-                          text: "product.description",
+                          text: product.description ?? 'No description available.',
                           style: AppTheme.body,
                         ),
                       ),
@@ -101,11 +103,13 @@ class ProductDetailsPage extends StatelessWidget {
                   ),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
-                    title: Text("Nutritions", style: AppTheme.h3Bold),
+                    title: Text("Weight", style: AppTheme.h3Bold),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        NutritionBadge(),
+                        NutritionBadge(
+                          weight: '${product.weight.toString()} g',
+                        ),
                         SizedBox(width: 7),
                         Icon(
                           Icons.arrow_forward_ios,
@@ -181,8 +185,9 @@ class _FavButtonState extends State<FavButton> {
 }
 
 class NutritionBadge extends StatelessWidget {
-  const NutritionBadge({super.key});
+  const NutritionBadge({super.key, required this.weight});
 
+  final String weight ;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -194,7 +199,7 @@ class NutritionBadge extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          "110gr",
+          weight,
           style: TextStyle(color: AppColors.secondary.withAlpha(150)),
         ),
       ),

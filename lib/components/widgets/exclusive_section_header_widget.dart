@@ -1,4 +1,4 @@
-import 'package:api_session_practice/shared/core/utils/app_colors.dart';
+import 'package:api_session_practice/core/utils/app_colors.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -30,10 +30,9 @@ class SectionHeaderWidget extends StatelessWidget {
               fontWeight: FontWeight.normal,
               color: AppColors.primary,
             ),
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                print('See all tapped');
-              },
+            recognizer: TapGestureRecognizer()..onTap = () {
+              // Handle "See all" tap
+            },
           ),
         ),
         SizedBox(width: 26), // Add some space between text and icon

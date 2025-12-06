@@ -1,5 +1,5 @@
 import 'package:api_session_practice/features/main/main_page.dart';
-import 'package:api_session_practice/shared/core/utils/app_colors.dart';
+import 'package:api_session_practice/core/utils/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

@@ -1,7 +1,7 @@
 import 'package:api_session_practice/features/categories/explore_page.dart';
 import 'package:api_session_practice/features/Favorites/favorite_page.dart';
 import 'package:api_session_practice/features/products/shop_page.dart';
-import 'package:api_session_practice/shared/core/utils/app_colors.dart';
+import 'package:api_session_practice/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 class MainPage extends StatefulWidget {

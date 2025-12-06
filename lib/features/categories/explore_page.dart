@@ -1,4 +1,4 @@
-import 'package:api_session_practice/shared/components/widgets/search_bar_widget.dart';
+import 'package:api_session_practice/components/widgets/search_bar_widget.dart';
 import 'package:api_session_practice/features/categories/category_page.dart';
 import 'package:api_session_practice/features/categories/widgets/category_card.dart';
 import 'package:flutter/material.dart';
